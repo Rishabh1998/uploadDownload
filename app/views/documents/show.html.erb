@@ -1,0 +1,37 @@
+<div class="container">
+  <% if !flash[:notice].blank? %>
+    <div>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <br>
+
+  <%= link_to "Add New Document", new_document_path %>
+  <br>
+  <br>
+  <% if @document.present? %>
+  <table border="3" class="table table-bordered">
+    <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Download Link</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <%# @documents.each do |document| %>
+      <tr>
+        <td><%= @document.name %></td>
+        <td><%= link_to "Download", download_or_destroy_documents_path(id: @document), method: :get %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Share the above url with anyone to download.</h3>
+  <% else %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">No File Found</div>
+    </div>
+  <% end %>
+</div>  

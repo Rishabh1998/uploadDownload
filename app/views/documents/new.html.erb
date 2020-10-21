@@ -1,0 +1,48 @@
+<div class="container">
+  <%# if !@document.errors.empty? %>
+  <h3>Upload Documents here</h3>
+  <br><br>
+    <div>
+
+      <ul>
+        <% @document.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+        <div class="container">
+          <% if !@document.errors.empty? %>
+            <div>
+
+              <ul>
+                <% @document.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>      </ul>
+
+            </div>
+          <% end %>
+        </div>
+
+          <div class="form-group">
+            <%= form_for @document, html: { multipart: true } do |f| %>
+              <%= f.label :file_name, :class => "control-label col-sm-2" %>
+              <div class="col-sm-4">
+                <%= f.text_field :name, :class => "form-control" %>
+              </div>
+              <br><br><br>
+              <div class="form-group">
+                <%= f.label :attachment, :class => "control-label col-sm-2" %>
+                <div class="col-sm-4">
+                  <%= f.file_field :attachment, :class => "form-control" %>
+                </div>
+              </div>
+              <br><br>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= f.submit "Save", :class => "btn btn-default" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+  <%# end %>
+</div>
